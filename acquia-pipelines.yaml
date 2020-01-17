@@ -16,6 +16,8 @@ events:
           script:
             - composer validate --no-check-all --ansi
             - composer install
-    - deploy:
-        script:
+  post-deploy:
+    steps:
+      - deploy:
+          script:
             - pipelines-deploy
