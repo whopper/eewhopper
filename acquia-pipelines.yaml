@@ -15,13 +15,16 @@ events:
       - setup-env:
           type: script
           script:
-            - composer require acquia/blt:^10.0 --no-update
-            - composer update
-            - ./vendor/bin/blt setup
-            # Update gitignore: https://docs.acquia.com/blt/install/adding-to-project/
-            #- composer create-project --no-interaction acquia/blt-project migration
-            #- mv migration/* .
-            #- blt setup
+#            - composer require acquia/blt:^10.0 --no-update
+#            - composer update
+#            - ./vendor/bin/blt setup
+            - mkdir docroot
+            - pushd docroot
+            - curl --retry 3 --location --fail --silent --show-error --output archive.tar.gz https://www.drupal.org/download-latest/tar.gz
+            - tar --strip-components=1 -zxf archive.tar.gz
+            - rm -rf archive.tar.gz
+            - mkdir -p sites/default
+            - cp ../settings.php ./sites/default
 
   post-deploy:
     steps:
