@@ -14,9 +14,13 @@ events:
       - setup:
           type: script
           script:
+            # 1) Download archive
             - cd docroot
-            - composer validate --no-check-all --ansi
-            - composer install
+            - curl --retry 3 --location --fail --silent --show-error --output archive.tar.gz https://www.drupal.org/download-latest/tar.gz
+            # 2) Import archive, install with drush
+            - tar --strip-components=1 -zxf archive.tar.gz
+            # 3) Remove archive
+            - rm -rf archive.tar.gz
   post-deploy:
     steps:
       - deploy:
