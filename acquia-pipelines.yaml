@@ -15,9 +15,13 @@ events:
       - setup-env:
           type: script
           script:
-            - composer create-project --no-interaction acquia/blt-project migration
-            - mv migration/* .
+            - composer require acquia/blt:^10.0 --no-update
+            - composer update
             - blt setup
+            # Update gitignore: https://docs.acquia.com/blt/install/adding-to-project/
+            #- composer create-project --no-interaction acquia/blt-project migration
+            #- mv migration/* .
+            #- blt setup
 
   post-deploy:
     steps:
