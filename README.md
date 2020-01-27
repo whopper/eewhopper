@@ -15,5 +15,5 @@ This will trigger a pipelines job which currently does the following:
   
 2) Remaining work
 * It seems we can't `drush site-install` inside of pipelines, so the conclusion of this script needs to trigger an event in the hosting API which:
-** Runs `drush site-install` in the docroot with sane defaults to get the site installed.
-** Migrates the databases and files from the old site into the appropriate locations for this site.
+  - Runs `drush site-install` in the docroot with sane defaults to get the site installed.
+  - Migrates the databases and files from the old site into the appropriate locations for this site.
