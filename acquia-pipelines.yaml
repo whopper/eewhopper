@@ -15,7 +15,7 @@ events:
       - setup-env:
           type: script
           script:
-            i#- mkdir docroot
+            #- mkdir docroot
             - pushd docroot
             #- curl --retry 3 --location --fail --silent --show-error --output archive.tar.gz https://www.drupal.org/download-latest/tar.gz
             #- tar --strip-components=1 -zxf archive.tar.gz
