@@ -20,9 +20,9 @@ events:
             - sed -i "s/SITEGROUP/${PIPELINE_CLOUD_SITE}/" ../settings.php
             - sed -i "s/DBROLE/$(echo $CDE_DATABASES | awk -F ',' '{print $1}')/" ../settings.php
             - cp ../settings.php ./sites/default
-            - drush site-install --account-name='admin' --account-mail='foo@bar.com' --site-mail='foo@bar.com' --account-pass='randompass' --site-name='Drupal 8'
   post-deploy:
     steps:
       - deploy:
           script:
             - pipelines-deploy
+            - drush site-install --account-name='admin' --account-mail='foo@bar.com' --site-mail='foo@bar.com' --account-pass='randompass' --site-name='Drupal 8'
