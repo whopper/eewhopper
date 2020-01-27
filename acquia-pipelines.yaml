@@ -18,7 +18,7 @@ events:
             - pushd docroot
             - composer install
             - mkdir -p sites/default/files
-            - sed -i "s/SITEGROUP/${PIPELINE_CLOUD_SITE}" ../settings.php
+            - sed -i "s/SITEGROUP/${PIPELINE_CLOUD_SITE}/" ../settings.php
             - sed -i "s/DBROLE/$(echo $CDE_DATABASES | awk -F ',' '{print $1}')/" ../settings.php
             - cp ../settings.php ./sites/default
             # Next:
