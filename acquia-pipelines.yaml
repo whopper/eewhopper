@@ -18,8 +18,9 @@ events:
             - pushd docroot
             - composer install
             - mkdir -p sites/default/files
+            - sed -i "s/SITEGROUP/${PIPELINE_CLOUD_SITE}" ../settings.php
+            - sed -i "s/DBROLE/$(echo $CDE_DATABASES | awk -F ',' '{print $1}')/" ../settings.php
             - cp ../settings.php ./sites/default
-            - env
             # Next:
             # Automate settings.php if possible
             # See if we can drush-install with some sane basics
