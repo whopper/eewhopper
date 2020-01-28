@@ -25,8 +25,5 @@ events:
       - deploy:
           script:
             - pipelines-deploy
-            # We can't site-install inside of pipelines, it seems. This results in:
-            # Drush\Sql\SqlException: Unable to find a matching SQL Class. Drush       [error]
-            # cannot find your database connection details. in
-            # /usr/local/drush8/vendor/drush/drush/commands/sql/sql.drush.inc:577
+            # Next step would be to install Drupal, but can't do this in pipelines.
             #- pushd docroot && /usr/local/bin/drush8 site-install --account-name='admin' --account-mail='foo@bar.com' --site-mail='foo@bar.com' --account-pass='randompass' --site-name='Drupal 8'
