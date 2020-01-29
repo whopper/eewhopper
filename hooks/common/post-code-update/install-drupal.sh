@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-echo "POST CODE DEPLOY!!"
+echo "POST CODE UPDATE!!!"
 # Is there a way to check for an existing install and not do this if there is
 # one?
 cd /var/www/html/${1}${2}/docroot
